@@ -9,7 +9,7 @@ provider "azurerm" {
 }
 
 provider "azuread" {
-  user_name       = var.user_name
-  password        = var.password
+  client_id = var.client_id
+  client_secret = var.client_secret
   subscription_id = var.subscription_id
 }

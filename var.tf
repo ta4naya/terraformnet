@@ -37,3 +37,22 @@ variable "image_sku" {
   description = "Azure image sku"
   default     = "2016-Datacenter"
 }
+
+variable "client_id" {
+  type        = string
+  description = "Azure image sku"
+ 
+}
+variable "client_secret" {
+  type        = string
+  description = "Azure image sku"
+ 
+}
+
+variable "subscription_id" {
+  type        = string
+  description = "Azure image sku"
+ 
+}
+
+
