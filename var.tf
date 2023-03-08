@@ -11,16 +11,15 @@ variable "vmnic" {
 
 }
 
-variable "admin_login" {
-  type        = string
-  description = "local admin user of the virtual machine"
-
+variable "admin_username" {
+  type = map(string)
+  sensitive = true
+  
 }
 
 variable "admin_password" {
-  type        = string
-  description = "password of the local admin user"
-
+  type = map(string)
+  sensitive = true
 }
 
 variable "image_publisher" {
