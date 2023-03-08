@@ -11,17 +11,6 @@ variable "vmnic" {
 
 }
 
-variable "admin_username" {
-  type      = map(string)
-  sensitive = true
-
-}
-
-variable "admin_password" {
-  type      = map(string)
-  sensitive = true
-}
-
 variable "image_publisher" {
   type        = string
   description = "Azure image publisher"
@@ -38,6 +27,14 @@ variable "image_sku" {
   default     = "2016-Datacenter"
 }
 
+variable "admin_username" {
+  type      = map(string)
+  sensitive = true
 
+}
 
+variable "admin_password" {
+  type      = map(string)
+  sensitive = true
+}
 
