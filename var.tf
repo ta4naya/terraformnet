@@ -28,13 +28,13 @@ variable "image_sku" {
 }
 
 variable "admin_username" {
-  type      = map(string)
+  type      = map
   sensitive = true
 
 }
 
 variable "admin_password" {
-  type      = map(string)
+  type      = map
   sensitive = true
 }
 
