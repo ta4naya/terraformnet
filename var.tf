@@ -39,7 +39,5 @@ variable "image_sku" {
 }
 
 
- 
-}
 
 
