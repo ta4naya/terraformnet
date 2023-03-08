@@ -9,5 +9,5 @@ provider "azurerm" {
 }
 
 provider "azuread" {
- 
+
 }

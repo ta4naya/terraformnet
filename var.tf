@@ -12,13 +12,13 @@ variable "vmnic" {
 }
 
 variable "admin_username" {
-  type = map(string)
+  type      = map(string)
   sensitive = true
-  
+
 }
 
 variable "admin_password" {
-  type = map(string)
+  type      = map(string)
   sensitive = true
 }
 
