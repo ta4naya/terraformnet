@@ -6,7 +6,7 @@ resource "azurerm_windows_virtual_machine" "sycor" {
   size                  = "Standard_F2"
   admin_username = lookup(var.admin_username, var.vmname[count.index], null)
   admin_password = lookup(var.admin_password, var.vmname[count.index], null)
-  network_interface_id = azurerm_network_interface.sycor[count.index].id
+  network_interface_ids = [azurerm_network_interface.sycor[count.index].id, ]
   os_disk {
     name                 = "${var.vmname[count.index]}-os-disk-01"
     caching              = "ReadWrite"
