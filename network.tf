@@ -22,6 +22,7 @@ resource "azurerm_network_interface" "sycor" {
     name                          = "internal"
     subnet_id                     = azurerm_subnet.sycor.id
     private_ip_address_allocation = "Dynamic"
+    public_ip_address_id = azurerm_public_ip.sycor[count.index].id
   }
 }
 data "azurerm_network_interface" "sycor" {
@@ -36,4 +37,14 @@ resource "azurerm_network_interface_security_group_association" "sycor" {
   network_security_group_id = azurerm_network_security_group.sycor.id
 }
 
- 
+ resource "azurerm_public_ip" "sycor" {
+  count               = 2
+  name                = "pip-${count.index}"
+  resource_group_name = azurerm_resource_group.sycor.name
+  location            = azurerm_resource_group.sycor.location
+  allocation_method   = "dynamic"
+
+  tags = {
+    environment = "Production"
+  }
+}
