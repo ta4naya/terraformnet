@@ -42,7 +42,7 @@ resource "azurerm_network_interface_security_group_association" "sycor" {
   name                = "pip-${count.index}"
   resource_group_name = azurerm_resource_group.sycor.name
   location            = azurerm_resource_group.sycor.location
-  allocation_method   = "dynamic"
+  allocation_method   = "Dynamic"
 
   tags = {
     environment = "Production"
