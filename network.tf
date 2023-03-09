@@ -13,8 +13,8 @@ resource "azurerm_subnet" "sycor" {
 }
 
 resource "azurerm_network_interface" "sycor" {
-  count               = length(var.vmnic)
-  name                = var.vmnic[count.index]
+  count               = 2
+  name                = "nic-${count.index}"
   location            = azurerm_resource_group.sycor.location
   resource_group_name = azurerm_resource_group.sycor.name
 
@@ -24,16 +24,14 @@ resource "azurerm_network_interface" "sycor" {
     private_ip_address_allocation = "Dynamic"
   }
 }
-
 data "azurerm_network_interface" "sycor" {
-  count               = length(var.vmnic)
-  name                = var.vmnic[count.index]
-  resource_group_name = azurerm_resource_group.sycor.name
+    count               = 2
+    name                = "nic-${count.index}"
+    resource_group_name = azurerm_resource_group.sycor.name
 }
 
 resource "azurerm_network_interface_security_group_association" "sycor" {
-  count               = length(var.vmnic)
-  network_interface_id      = data.azurerm_network_interface.sycor[count.index].id
+  network_interface_id      = data.azurerm_network_interface.sycor.*.id
   network_security_group_id = azurerm_network_security_group.sycor.id
 }
 
