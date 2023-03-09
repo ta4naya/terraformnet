@@ -25,9 +25,14 @@ resource "azurerm_network_interface" "sycor" {
   }
 }
 
-resource "azurerm_network_interface_security_group_association" "sycor" {
+data "azurerm_network_interface" "sycor" {
 
-  network_interface_id      = azurerm_network_interface.sycor[count.index].id
+}
+
+resource "azurerm_network_interface_security_group_association" "sycor" {
+  count               = length(var.vmnic)
+  name                = var.vmnic[count.index]
+  network_interface_id      = data.azurerm_network_interface.sycor[count.index].id
   network_security_group_id = azurerm_network_security_group.sycor.id
 }
 
