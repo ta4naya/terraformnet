@@ -31,7 +31,8 @@ data "azurerm_network_interface" "sycor" {
 }
 
 resource "azurerm_network_interface_security_group_association" "sycor" {
-  network_interface_id      = data.azurerm_network_interface.sycor.*.id
+   count               = 2
+  network_interface_id      = data.azurerm_network_interface.sycor[count.index].id
   network_security_group_id = azurerm_network_security_group.sycor.id
 }
 
