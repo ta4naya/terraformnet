@@ -26,7 +26,7 @@ resource "azurerm_network_interface" "sycor" {
 }
 
 data "azurerm_network_interface" "sycor" {
-
+   resource_group_name = azurerm_resource_group.sycor.name
 }
 
 resource "azurerm_network_interface_security_group_association" "sycor" {
